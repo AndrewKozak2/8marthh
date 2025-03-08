@@ -9,6 +9,7 @@ body {
     text-align: center;
     margin: 0;
     overflow: hidden;
+    position: relative; /* Додано для точного позиціонування серця */
 }
 
 h1 {
@@ -26,10 +27,12 @@ p {
 
 .heart {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    top: 20%; /* Центруємо серце по вертикалі */
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg); /* Центруємо серце та додаємо обертання */
+    width: 100px;
+    height: 100px;
     background-color: red;
-    transform: rotate(-45deg);
     animation: heartbeat 1s infinite;
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
 }
@@ -38,20 +41,20 @@ p {
 .heart::after {
     content: "";
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     background-color: red;
     border-radius: 50%;
 }
 
 .heart::before {
-    top: -60px;
+    top: -50px;
     left: 0;
 }
 
 .heart::after {
     top: 0;
-    left: 60px;
+    left: 50px;
 }
 
 @keyframes heartbeat {
@@ -122,5 +125,22 @@ p {
     }
     50% {
         transform: scale(1.2);
+    }
+}
+
+/* Медіа-запит для мобільних пристроїв */
+@media (max-width: 800px) {
+    .heart {
+        top: 10%; /* Центруємо серце по вертикалі */
+        left: 50%;
+        transform: translateX(-50%) rotate(-45deg); /* Центруємо серце */
+    }
+
+    h1 {
+        font-size: 2em; /* Зменшуємо шрифт для мобільних */
+    }
+
+    p {
+        font-size: 1em; /* Зменшуємо шрифт для мобільних */
     }
 }
